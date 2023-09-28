@@ -10,8 +10,8 @@ function Ticket() {
       </div>
       <div className={styles.ticket__sections}>
       <div className={styles.ticket__items}>
-        <label className={styles.ticket__label}>MOW – HKT</label>
-        <label className={styles.ticket__time}>10:45 – 08:00</label>
+        <span className={styles.ticket__label}>MOW – HKT</span>
+        <span className={styles.ticket__time}>10:45 – 08:00</span>
       </div>
       </div>
     </section>

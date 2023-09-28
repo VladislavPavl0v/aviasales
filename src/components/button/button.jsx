@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
 // eslint-disable-next-line no-unused-vars
-import styles from "./Button.module.scss";
+import styles from './Button.module.scss';
+
 function Button() {
   return (
     <section>
-      <button className={styles.button}>ПОКАЗАТЬ ЕЩЕ 5 БИЛЕТОВ</button>
+      <button type="button" className={styles.button}>ПОКАЗАТЬ ЕЩЕ 5 БИЛЕТОВ</button>
     </section>
   );
 }

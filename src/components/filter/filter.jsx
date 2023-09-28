@@ -1,5 +1,6 @@
-import React from "react";
-import styles from "./Filter.module.scss";
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React from 'react';
+import styles from './Filter.module.scss';
 
 function Filter() {
   return (
@@ -9,33 +10,33 @@ function Filter() {
         <li className={styles.checkbox}>
           <label className={styles.checkbox__label}>
             <input className={styles.checkbox__real} type="checkbox" />
-            <span className={styles.checkbox__unreal}></span>
+            <span className={styles.checkbox__unreal} />
             Все
           </label>
         </li>
         <li className={styles.checkbox}>
           <label className={styles.checkbox__label}>
             <input className={styles.checkbox__real} type="checkbox" />
-            <span className={styles.checkbox__unreal}></span>
+            <span className={styles.checkbox__unreal} />
             Без пересадок
           </label>
         </li>
         <li className={styles.checkbox}>
           <label className={styles.checkbox__label}>
             <input className={styles.checkbox__real} type="checkbox" />
-            <span className={styles.checkbox__unreal}></span>1 пересадка
+            <span className={styles.checkbox__unreal} />1 пересадка
           </label>
         </li>
         <li className={styles.checkbox}>
           <label className={styles.checkbox__label}>
             <input className={styles.checkbox__real} type="checkbox" />
-            <span className={styles.checkbox__unreal}></span>2 пересадки
+            <span className={styles.checkbox__unreal} />2 пересадки
           </label>
         </li>
         <li className={styles.checkbox}>
-          <label className={styles.checkbox__label}>
+          <label className={styles.checkbox__label} >
             <input className={styles.checkbox__real} type="checkbox" />
-            <span className={styles.checkbox__unreal}></span>3 пересадки
+            <span className={styles.checkbox__unreal} />3 пересадки
           </label>
         </li>
       </ul>
