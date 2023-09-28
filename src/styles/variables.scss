@@ -1,0 +1,136 @@
+@font-face {
+  font-family: "Open Sans-Bold";
+  src: local("Open Sans-Bold"),
+    url(../fonts/Open_Sans/static/OpenSans-Bold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  src: local("Open Sans"),
+    url(../fonts/Open_Sans/static/OpenSans-Light.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Open Sans-medium";
+  src: local("Open Sans-medium"),
+    url(../fonts/Open_Sans/static/OpenSans-Medium.ttf);
+}
+$background_element: rgba(255, 255, 255, 1);
+$box_shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+$font-light: "Open Sans";
+$font-bold: "Open Sans-Bold";
+$font-medium: "Open Sans-medium";
+$font-color: rgba(74, 74, 74, 1);
+$font-colorGrey: rgba(160, 176, 185, 1);
+$color-blue: rgba(33, 150, 243, 1);
+$color-lightBlue: rgba(154, 187, 206, 1);
+
+/* Reset and base styles  */
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Links */
+
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Common */
+
+aside,
+nav,
+footer,
+header,
+section,
+main {
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Form */
+
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button,
+input[type="submit"] {
+  display: inline-block;
+  box-shadow: none;
+  background-color: transparent;
+  background: none;
+  cursor: pointer;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+label {
+  cursor: pointer;
+}
+
+legend {
+  display: block;
+}
