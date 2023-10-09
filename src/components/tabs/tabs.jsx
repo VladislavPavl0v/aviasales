@@ -9,10 +9,10 @@ function Tabs() {
         style={{ borderTopLeftRadius: '10px', borderBottomLeftRadius: '10px' }}
         className={styles.tabs__button}
       >
-        САМЫЙ ДЕШЕВЫЙ
+        самый дешевый
       </button>
       <button type="button" className={styles.tabs__button}>
-        САМЫЙ ОПТИМАЛЬНЫЙ
+        самый оптимальный
       </button>
       <button
         type="button"
@@ -22,7 +22,7 @@ function Tabs() {
           borderBottomRightRadius: '10px',
         }}
       >
-        САМЫЙ БЫСТРЫЙ
+        самый быстрый
       </button>
     </section>
   );

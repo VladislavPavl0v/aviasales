@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,8 +7,9 @@ import styles from './Filter.module.scss';
 function FilterItem({ value, label, checked, onClick }) {
   return (
     <li className={styles.checkbox}>
-      <label className={styles.checkbox__label}>
+      <label className={styles.checkbox__label} htmlFor={label}>
         <input
+          id={label}
           className={styles.checkbox__real}
           type="checkbox"
           checked={checked}
@@ -61,14 +60,9 @@ function Filter() {
 
   return (
     <aside className={styles.filter}>
-      <span className={styles.filter__title}>КОЛИЧЕСТВО ПЕРЕСАДОК</span>
+      <span className={styles.filter__title}>количество пересадок</span>
       <ul className={styles.filter__items}>
-        <FilterItem
-          value="Все"
-          label="Все"
-          checked={isAll}
-          onClick={toggleAllFilter}
-        />
+        <FilterItem value="Все" label="Все" checked={isAll} onClick={toggleAllFilter} />
         {filters.map((filter) => (
           <FilterItem
             key={filter.name}

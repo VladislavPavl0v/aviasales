@@ -15,8 +15,9 @@
   color: $font-color;
   font-family: $font-bold;
   font-size: 12px;
-  margin-left: 20px;
+  text-indent: 20px;
   margin-bottom: 15px;
+  text-transform: uppercase;
 }
 .filter__items {
   display: flex;
@@ -52,6 +53,9 @@
   border: 1px solid $color-lightBlue;
   border-radius: 2px;
   background-color: $background_element;
+  &:hover {
+    background-color: rgba(241, 252, 255, 1);
+  }
 }
 
 .checkbox__real:checked + .checkbox__unreal {

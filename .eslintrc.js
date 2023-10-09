@@ -43,6 +43,8 @@ module.exports = {
     'react/destructuring-assignment': 'off',
     'react/static-property-placement': 'off',
     'react/no-unused-state': 'off',
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'import/no-extraneous-dependencies': 'off',
+    'import/no-unresolved': 'off',
   },
 };
