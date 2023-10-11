@@ -1,12 +1,10 @@
-import React from "react";
-import Logo from "./Logo.png";
-import "../../styles/variables.scss";
-import styles from "./App.module.scss";
-
-import Tabs from "../tabs";
-import Filter from "../filter";
-import TicketList from "../ticket-list";
-import Button from "../button";
+import React from 'react';
+import '../../styles/variables.scss';
+import styles from './App.module.scss';
+import Filter from '../filter';
+import TicketList from '../ticket-list';
+import ContentLoader from '../loader/loader';
+import Logo from '../../assets/Logo.png';
 
 function App() {
   return (
@@ -15,11 +13,10 @@ function App() {
         <img src={Logo} alt="logo" />
       </header>
       <main className={styles.main}>
+        <ContentLoader />
         <Filter />
         <section className={styles.content}>
-          <Tabs />
           <TicketList />
-          <Button />
         </section>
       </main>
     </section>

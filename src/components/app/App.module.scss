@@ -1,8 +1,8 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 .app {
   width: 960px;
-  height: 1350px;
+  min-height: 1350px;
   background-color: rgba(243, 247, 250, 1);
   margin: 0 auto;
 }

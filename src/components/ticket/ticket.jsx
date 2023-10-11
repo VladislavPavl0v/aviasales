@@ -1,10 +1,5 @@
-/* eslint-disable consistent-return */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { add } from 'date-fns';
 import styles from './Ticket.module.scss';
 
@@ -48,6 +43,7 @@ function Ticket(props) {
     if (arr.length === 1) return `${arr.length} ПЕРЕСАДКА`;
     if (arr.length === 0) return `${arr.length} ПЕРЕСАДОК`;
     if (arr.length === 3 || arr.length === 2) return `${arr.length} ПЕРЕСАДКИ`;
+    return '';
   }
 
   return (
@@ -58,38 +54,54 @@ function Ticket(props) {
       </div>
       <div className={styles.ticket__sections}>
         <div className={styles.ticket__items}>
-          <label className={styles.ticket__label}>
+          <span className={styles.ticket__span}>
             {startOrigin} – {stopOrigin}
-          </label>
-          <label className={styles.ticket__time}>{convertDate(dateStart, durationStart)}</label>
+          </span>
+          <span className={styles.ticket__time}>{convertDate(dateStart, durationStart)}</span>
         </div>
         <div className={styles.ticket__items}>
-          <label className={styles.ticket__label}>В ПУТИ</label>
-          <label className={styles.ticket__time}>{getTimeFromMins(durationStart)}</label>
+          <span className={styles.ticket__span}>В ПУТИ</span>
+          <span className={styles.ticket__time}>{getTimeFromMins(durationStart)}</span>
         </div>
         <div className={styles.ticket__items}>
-          <label className={styles.ticket__label}>{transfer(quantityTransferStart)}</label>
-          <label className={styles.ticket__time}>{quantityTransferStart.join(', ')}</label>
+          <span className={styles.ticket__span}>{transfer(quantityTransferStart)}</span>
+          <span className={styles.ticket__time}>{quantityTransferStart.join(', ')}</span>
         </div>
       </div>
       <div className={styles.ticket__sections}>
         <div className={styles.ticket__items}>
-          <label className={styles.ticket__label}>
+          <span className={styles.ticket__span}>
             {startOrigin} – {stopOrigin}
-          </label>
-          <label className={styles.ticket__time}>{convertDate(dateStop, durationStop)}</label>
+          </span>
+          <span className={styles.ticket__time}>{convertDate(dateStop, durationStop)}</span>
         </div>
         <div className={styles.ticket__items}>
-          <label className={styles.ticket__label}>В ПУТИ</label>
-          <label className={styles.ticket__time}>{getTimeFromMins(durationStop)}</label>
+          <span className={styles.ticket__span}>В ПУТИ</span>
+          <span className={styles.ticket__time}>{getTimeFromMins(durationStop)}</span>
         </div>
         <div className={styles.ticket__items}>
-          <label className={styles.ticket__label}>{transfer(quantityTransferStop)}</label>
-          <label className={styles.ticket__time}>{quantityTransferStop.join(', ')}</label>
+          <span className={styles.ticket__span}>{transfer(quantityTransferStop)}</span>
+          <span className={styles.ticket__time}>{quantityTransferStop.join(', ')}</span>
         </div>
       </div>
     </section>
   );
 }
+
+Ticket.propTypes = {
+  price: PropTypes.number.isRequired,
+  durationStart: PropTypes.number.isRequired,
+  dateStart: PropTypes.string.isRequired,
+  durationStop: PropTypes.number.isRequired,
+  dateStop: PropTypes.string.isRequired,
+  startOrigin: PropTypes.string.isRequired,
+  stopOrigin: PropTypes.string.isRequired,
+  quantityTransferStart: PropTypes.arrayOf(PropTypes.string).isRequired,
+  quantityTransferStop: PropTypes.arrayOf(PropTypes.string).isRequired,
+  logo: PropTypes.string,
+};
+Ticket.defaultProps = {
+  logo: null,
+};
 
 export default Ticket;

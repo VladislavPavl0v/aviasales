@@ -1,12 +1,18 @@
 import React from 'react';
-// eslint-disable-next-line no-unused-vars
+import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 
-function Button() {
+function Button(props) {
   return (
     <section>
-      <button type="button" className={styles.button}>ПОКАЗАТЬ ЕЩЕ 5 БИЛЕТОВ</button>
+      <button type="button" className={styles.button} onClick={props.onClick}>
+        ПОКАЗАТЬ ЕЩЕ 5 БИЛЕТОВ
+      </button>
     </section>
   );
 }
+
+Button.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 export default Button;

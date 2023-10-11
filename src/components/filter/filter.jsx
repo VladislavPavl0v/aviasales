@@ -4,16 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from '../../store/aviasalesSlice';
 import styles from './Filter.module.scss';
 
-function FilterItem({ value, label, checked, onClick }) {
+function FilterItem({ value, label, checked, onClick, id }) {
   return (
     <li className={styles.checkbox}>
-      <label className={styles.checkbox__label} htmlFor={label}>
+      <label className={styles.checkbox__label} htmlFor={id}>
         <input
-          id={label}
+          key={id}
+          id={id}
           className={styles.checkbox__real}
           type="checkbox"
           checked={checked}
-          onChange={() => onClick(!checked, value)}
+          onChange={() => onClick(!checked, value, id)}
         />
         <span className={styles.checkbox__unreal} />
         {label}
@@ -23,6 +24,7 @@ function FilterItem({ value, label, checked, onClick }) {
 }
 
 FilterItem.propTypes = {
+  id: propTypes.number,
   value: propTypes.string,
   label: propTypes.string,
   checked: propTypes.bool,
@@ -30,6 +32,7 @@ FilterItem.propTypes = {
 };
 
 FilterItem.defaultProps = {
+  id: undefined,
   value: undefined,
   label: undefined,
   checked: false,
@@ -47,15 +50,18 @@ function Filter() {
     setIsAll(allChecked);
   }, [filters]);
 
-  const toggleAllFilter = (isChecked) => {
-    dispatch(setFilter({ name: 'Все', value: isChecked }));
-    filters.forEach((filter) => {
-      dispatch(setFilter({ name: filter.name, value: isChecked }));
-    });
+  const toggleFilter = (name, isChecked, id) => {
+    dispatch(setFilter({ name, value: isChecked, id }));
+    const allSelected = filters.every((f) => (f.name === name ? isChecked : f.value));
+    setIsAll(allSelected);
   };
+  const toggleAllFilter = () => {
+    const newIsAllState = !isAll;
+    setIsAll(newIsAllState);
 
-  const toggleFilter = (name, isChecked) => {
-    dispatch(setFilter({ name, value: isChecked }));
+    filters.forEach((filter) => {
+      dispatch(setFilter({ name: filter.name, value: newIsAllState, id: filter.id }));
+    });
   };
 
   return (
@@ -65,11 +71,12 @@ function Filter() {
         <FilterItem value="Все" label="Все" checked={isAll} onClick={toggleAllFilter} />
         {filters.map((filter) => (
           <FilterItem
-            key={filter.name}
+            key={filter.id}
+            id={filter.id}
             value={filter.name}
             label={filter.name}
             checked={filter.value}
-            onClick={(isChecked, name) => toggleFilter(name, isChecked)}
+            onClick={(isChecked, name, id) => toggleFilter(name, isChecked, id)}
           />
         ))}
       </ul>

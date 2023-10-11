@@ -1,1 +1,16 @@
 @import '../../styles/variables.scss';
+.TicketList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.message {
+  width: 502px;
+  height: 184px;
+  box-shadow: $box_shadow;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

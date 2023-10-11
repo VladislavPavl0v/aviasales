@@ -4,7 +4,7 @@
   display: flex;
 }
 .tabs__button {
-  width: 167px;
+  width: 250.5px;
   height: 50px;
   border: 1px solid rgba(223, 229, 236, 1);
   background: $background_element;
@@ -12,15 +12,14 @@
   font-size: 12px;
   color: $font-color;
   text-transform: uppercase;
+  transition: transform 0.2s ease;
+  &:active {
+    background-color: $color-blue;
+    transform: scale(1.05);
+    color: $background_element;
   }
-.tabs__stub {
-  width: 167px;
-  height: 50px;
-  border: 1px solid rgba(223, 229, 236, 1);
-  background-color: $background_element;
 }
-
-.tabs__buttonsBorder{
-    border-top-left-radius: 10px; 
-    border-bottom-left-radius: 10px;
+.active__button {
+  background-color: $color-blue;
+  color: $background_element;
 }

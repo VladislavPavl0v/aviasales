@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 .filter {
   width: 232px;
@@ -24,7 +24,7 @@
   flex-direction: column;
 }
 
-.checkbox__label{
+.checkbox__label {
   text-indent: 15px;
   display: flex;
   align-items: center;
@@ -62,17 +62,15 @@
   background: url(../../assets/Shape.svg) center no-repeat;
   background-color: $background_element;
   border: 1px solid $color-blue;
-
 }
 
 .checkbox__real:focus-visible + .checkbox__unreal {
-  background-color:  rgba(241, 252, 255, 1);
-  border: 1px solid $color-blue;
+  background-color: $background_element;
+  box-shadow: 0 0 0 5px rgb(217, 241, 248);
 }
 
 .checkbox__real:checked:hover + .checkbox__unreal {
   background-color: rgba(241, 252, 255, 1);
-
 }
 
 .checkbox {
