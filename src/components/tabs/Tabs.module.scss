@@ -3,7 +3,8 @@
 .tabs {
   display: flex;
 }
-.tabs__button {
+.tabs__button__left,
+.tabs__button__right {
   width: 250.5px;
   height: 50px;
   border: 1px solid rgba(223, 229, 236, 1);
@@ -23,3 +24,13 @@
   background-color: $color-blue;
   color: $background_element;
 }
+
+.tabs__button__left{
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
+}
+
+.tabs__button__right{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  }

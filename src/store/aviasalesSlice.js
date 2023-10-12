@@ -1,48 +1,6 @@
-/* eslint-disable no-await-in-loop */
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-export const fetchAviasalesTicket = createAsyncThunk(
-  'aviasales/fetchAviasalesTicket',
-  async (_, thunkAPI) => {
-    try {
-      const BASE_URL = 'https://aviasales-test-api.kata.academy';
-      const searchResponse = await axios.get(`${BASE_URL}/search`);
-      const searchId = searchResponse.data.searchId;
-
-      let allTickets = [];
-      let stop = false;
-      const maxAttempts = 3;
-
-      while (!stop) {
-        let attempts = maxAttempts;
-        while (attempts > 0) {
-          try {
-            const ticketsResponse = await axios.get(`${BASE_URL}/tickets?searchId=${searchId}`);
-            allTickets = [...allTickets, ...ticketsResponse.data.tickets];
-            if (ticketsResponse.data.stop) {
-              stop = true;
-            }
-            break;
-          } catch (error) {
-            if (error.response && error.response.status === 500) {
-              attempts--;
-              if (attempts === 0) {
-                throw new Error('Наблюдаеться турбулетность');
-              }
-            } else {
-              throw error;
-            }
-          }
-        }
-      }
-
-      return allTickets;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  },
-);
+/* eslint-disable import/no-cycle */
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchAviasalesTicket } from './avisalesAsyncThunk';
 
 const initialState = {
   filters: [
@@ -53,7 +11,6 @@ const initialState = {
   ],
   ticket: [],
   isLoading: 0,
-  addTicket: 5,
   sortMethod: '',
   error: null,
 };
@@ -71,8 +28,9 @@ const aviasalesSlice = createSlice({
       }
     },
     updateAddTicket: (state, action) => {
-      state.addTicket = action.payload;
+      state.ticket = [...state.ticket, ...action.payload];
     },
+
     setSortMethod: (state, action) => {
       state.sortMethod = action.payload;
     },
@@ -86,13 +44,14 @@ const aviasalesSlice = createSlice({
       state.error = null;
     });
     builder.addCase(fetchAviasalesTicket.fulfilled, (state, action) => {
-      state.ticket = action.payload;
-      state.isLoading = 50;
+      state.ticket = [...state.ticket, ...action.payload];
+      state.isLoading = 97;
       state.error = null;
     });
+
     builder.addCase(fetchAviasalesTicket.rejected, (state, action) => {
       state.ticket = [];
-      state.isLoading = 100;
+      state.isLoading = 107;
       state.error = action.payload;
     });
   },

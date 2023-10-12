@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import classNames from 'classnames';
 import { setSortMethod } from '../../store/aviasalesSlice';
 
 import styles from './Tabs.module.scss';
@@ -12,27 +13,23 @@ function Tabs() {
     dispatch(setSortMethod(method));
     setActiveTab(method);
   };
+
   return (
     <section className={styles.tabs}>
       <button
         type="button"
-        style={{ borderTopLeftRadius: '10px', borderBottomLeftRadius: '10px' }}
-        className={`${styles.tabs__button} ${
-          activeTab === 'самый дешевый' ? styles.active__button : ''
-        }`}
+        className={classNames(styles.tabs__button__left, {
+          [styles.active__button]: activeTab === 'самый дешевый',
+        })}
         onClick={() => handleSort('самый дешевый')}
       >
         самый дешевый
       </button>
       <button
         type="button"
-        className={`${styles.tabs__button} ${
-          activeTab === 'самый быстрый' ? styles.active__button : ''
-        }`}
-        style={{
-          borderTopRightRadius: '10px',
-          borderBottomRightRadius: '10px',
-        }}
+        className={classNames(styles.tabs__button__right, {
+          [styles.active__button]: activeTab === 'самый быстрый',
+        })}
         onClick={() => handleSort('самый быстрый')}
       >
         самый быстрый

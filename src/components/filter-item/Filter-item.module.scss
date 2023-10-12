@@ -1,0 +1,55 @@
+@import '../../styles/variables.scss';
+
+.checkbox__label {
+  text-indent: 15px;
+  display: flex;
+  align-items: center;
+  padding-left: 2em;
+  font-family: $font-light;
+  font-size: 13px;
+  width: 100%;
+  height: 100%;
+  &:hover {
+    background-color: rgba(241, 252, 255, 1);
+  }
+}
+
+.checkbox__real {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.checkbox__unreal {
+  margin-left: -6px;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 1px solid $color-lightBlue;
+  border-radius: 2px;
+  background-color: $background_element;
+  &:hover {
+    background-color: rgba(241, 252, 255, 1);
+  }
+}
+
+.checkbox__real:checked + .checkbox__unreal {
+  background: url(../../assets/Shape.svg) center no-repeat;
+  background-color: $background_element;
+  border: 1px solid $color-blue;
+}
+
+.checkbox__real:focus-visible + .checkbox__unreal {
+  background-color: $background_element;
+  box-shadow: 0 0 0 5px rgb(217, 241, 248);
+}
+
+.checkbox__real:checked:hover + .checkbox__unreal {
+  background-color: rgba(241, 252, 255, 1);
+}
+
+.checkbox {
+  width: 232px;
+  height: 40px;
+}
