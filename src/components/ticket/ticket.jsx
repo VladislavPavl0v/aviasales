@@ -20,6 +20,7 @@ function Ticket(props) {
 
   const formattedPrice = price.toLocaleString('ru-RU');
 
+
   function getTimeFromMins(mins) {
     const hours = Math.trunc(mins / 60);
     const minutes = mins % 60;

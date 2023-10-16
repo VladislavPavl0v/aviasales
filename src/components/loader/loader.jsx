@@ -11,9 +11,9 @@ function ContentLoader() {
   const isLoading = useSelector((state) => state.aviasales.isLoading);
 
   useEffect(() => {
-    if (isLoading < 107 && isLoading >= 0) {
+    if (isLoading < 111 && isLoading >= 0) {
       const interval = setInterval(() => {
-        dispatch(updateLoadingProgress(10));
+        dispatch(updateLoadingProgress(7));
       }, 1000);
       return () => clearInterval(interval);
     }
@@ -21,7 +21,7 @@ function ContentLoader() {
   }, [isLoading, dispatch]);
   return (
     <div className={style.loader}>
-      {isLoading < 107 ? (
+      {isLoading < 111 ? (
         <Progress
           percent={isLoading}
           strokeColor={colorsLoader}

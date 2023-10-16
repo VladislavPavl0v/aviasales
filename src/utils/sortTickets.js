@@ -1,4 +1,4 @@
- const sortTickets = (tickets, method) =>
+ export const sortTickets = (tickets, method) =>
   [...tickets].sort((a, b) => {
     if (method === 'самый дешевый') {
       return a.price - b.price;
@@ -11,4 +11,3 @@
     return 0;
   });
 
-export default sortTickets;

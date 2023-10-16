@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchAviasalesTicket } from './avisalesAsyncThunk';
+import { fetchAviasalesTicket } from '../api/avisalesAsyncThunk';
+import { addUniqueTickets } from '../utils/addUniqueTickets';
 
 const initialState = {
   filters: [
@@ -28,7 +29,7 @@ const aviasalesSlice = createSlice({
       }
     },
     updateAddTicket: (state, action) => {
-      state.ticket = [...state.ticket, ...action.payload];
+      state.ticket = addUniqueTickets(state.ticket, action.payload);
     },
 
     setSortMethod: (state, action) => {
@@ -45,7 +46,7 @@ const aviasalesSlice = createSlice({
     });
     builder.addCase(fetchAviasalesTicket.fulfilled, (state, action) => {
       state.ticket = [...state.ticket, ...action.payload];
-      state.isLoading = 97;
+      state.isLoading = 90;
       state.error = null;
     });
 

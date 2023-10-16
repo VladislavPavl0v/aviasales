@@ -2,7 +2,7 @@
 /* eslint-disable no-await-in-loop */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { updateAddTicket } from './aviasalesSlice';
+import { updateAddTicket } from '../store/aviasalesSlice';
 
 export const fetchAviasalesTicket = createAsyncThunk(
   'aviasales/fetchAviasalesTicket',
@@ -15,6 +15,7 @@ export const fetchAviasalesTicket = createAsyncThunk(
       const allTickets = [];
       let stop = false;
       const maxAttempts = 3;
+
 
       while (!stop) {
         let attempts = maxAttempts;

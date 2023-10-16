@@ -1,3 +1,3 @@
 ## Aviasales React kata
 
-## https://aviasales-f3lv3rjdh-vladidance86-gmailcom.vercel.app/
+## https://aviasales-6tko5733h-vladidance86-gmailcom.vercel.app/

@@ -1,15 +1,13 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { updateAddTicket } from '../../store/aviasalesSlice';
-import { fetchAviasalesTicket } from '../../store/avisalesAsyncThunk';
+import { fetchAviasalesTicket } from '../../api/avisalesAsyncThunk';
 import Ticket from '../ticket/ticket';
 import Button from '../button';
 import Tabs from '../tabs/tabs';
 import Message from '../message/message';
 import styles from './Ticket-list.module.scss';
-import filterTickets from './ticketUtilit/filterTickets';
-import { sortTickets } from './ticketUtilit';
+import { filterTickets } from '../../utils/filterTickets';
+import { sortTickets } from '../../utils/sortTickets';
 
 function TicketList() {
   const ticket = useSelector((state) => state.aviasales.ticket);
@@ -31,18 +29,14 @@ function TicketList() {
     () => sortTickets(filteredTickets, sortMethod),
     [filteredTickets, sortMethod],
   );
-
-  function keyArr(item, index) {
-    return `${index}-${item.price}+${item.segments[0].duration}+${item.segments[1].duration}+${item.segments[0].date}+${item.segments[1].date}`;
-}
   return (
     <section className={styles.TicketList}>
       <Tabs />
       {sortedAndFilteredTickets.length > 0 ? (
         <>
-          {sortedAndFilteredTickets.slice(0, displayTickets).map((item, index) => (
+          {sortedAndFilteredTickets.slice(0, displayTickets).map((item) => (
             <Ticket
-              key={keyArr(item,index)}
+              key={`${item.price}${item.carrier}${item.segments[0].date}${item.segments[1].duration}${item.segments[1].date}`}
               price={item.price}
               startOrigin={item.segments[0].origin}
               stopOrigin={item.segments[1].origin}
